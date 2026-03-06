@@ -52,6 +52,8 @@ git clone git@github.com:Zihann73/zihanq-dotfiles.git ~/dotfiles
 
 ### Step 3 — Deploy
 
+**Option A: Fresh Mac (no existing configs)**
+
 ```bash
 cd ~/dotfiles
 bash install.sh
@@ -59,7 +61,25 @@ mkdir -p ~/Documents/Work
 source ~/.zshrc
 ```
 
-That's it. Your environment is ready.
+**Option B: Already have your own `.zshrc` / `.gitconfig` / etc.**
+
+> `install.sh` will **automatically back up** your existing files to `~/.dotfiles_backup/` before overwriting. But if you'd rather keep your current setup and just pick what you need, do it manually:
+
+```bash
+cd ~/dotfiles
+
+# Read each file, copy the parts you want into your own configs.
+# For example, append the aliases to your existing .zshrc:
+cat .zshrc            # review, then copy what you need
+
+# Or just grab the SSH fix:
+cat ssh_config        # copy into your ~/.ssh/config
+
+# Or just grab the Starship theme:
+cp starship.toml ~/.config/starship.toml
+```
+
+Pick **Option A** if you're starting fresh. Pick **Option B** if you already have configs you don't want to lose.
 
 ---
 
