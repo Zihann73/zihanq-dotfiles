@@ -1,0 +1,6 @@
+# Work identity (auto-loaded for ~/Documents/Work/ projects)
+# Update the fields below with your actual work info
+
+[user]
+    name = <your name>
+    email = <your work email>

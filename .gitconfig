@@ -1,0 +1,15 @@
+[user]
+    name = <your name>
+    email = <your email>
+[init]
+    defaultBranch = main
+[color]
+    ui = true
+[alias]
+    st = status
+    cm = commit -m
+    lg = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
+# Auto-switch to work identity for ~/Documents/Work/ projects
+[includeIf "gitdir:~/Documents/Work/"]
+    path = ~/.gitconfig-work

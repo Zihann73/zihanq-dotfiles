@@ -1,0 +1,9 @@
+# SSH config - connect to GitHub over Port 443 (bypasses VPN/firewall blocks)
+
+Host github.com
+    HostName ssh.github.com
+    Port 443
+    User git
+    IdentityFile ~/.ssh/id_ed25519
+    AddKeysToAgent yes
+    UseKeychain yes
