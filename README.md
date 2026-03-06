@@ -1,4 +1,4 @@
-# Hannah's Dotfiles
+# Zihann73's Dotfiles
 
 > *"The environment you work in determines the quality of the work you produce."*
 
@@ -13,11 +13,55 @@ A high-performance development environment optimized for productivity and AI wor
 - :bust_in_silhouette: **Identity Isolation** — Automatic Git identity switching for personal and work projects
 - :lock: **Robust Connectivity** — Hardened SSH config using Port 443 to bypass restrictive networks/VPNs
 
-## Quick Start
+---
+
+## Get Started
+
+> **First time here?** Follow these 3 steps. Takes about 5-10 minutes on a fresh Mac.
+>
+> For a deeper walkthrough of every config file, see **[GUIDE.md](GUIDE.md)**.
+
+### Step 1 — Install prerequisites
 
 ```bash
-git clone git@github.com:Zihann73/zihanq-dotfiles.git ~/dotfiles && cd ~/dotfiles && bash install.sh
+# Install Homebrew (skip if already installed)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install core tools
+brew install antidote starship git zoxide fzf
+brew install --cask font-jetbrains-mono-nerd-font
 ```
+
+Then set your terminal font: **iTerm2** → `Settings` → `Profiles` → `Text` → `Font` → `JetBrainsMono Nerd Font`
+
+### Step 2 — Set up SSH and clone
+
+```bash
+# Generate SSH key
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# Copy public key to clipboard
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+Paste the key into **GitHub** → **Settings** → **SSH and GPG Keys** → **New SSH Key**. Then clone:
+
+```bash
+git clone git@github.com:Zihann73/zihanq-dotfiles.git ~/dotfiles
+```
+
+### Step 3 — Deploy
+
+```bash
+cd ~/dotfiles
+bash install.sh
+mkdir -p ~/Documents/Work
+source ~/.zshrc
+```
+
+That's it. Your environment is ready.
+
+---
 
 ## What's Inside
 
@@ -30,45 +74,6 @@ git clone git@github.com:Zihann73/zihanq-dotfiles.git ~/dotfiles && cd ~/dotfile
 | `.gitconfig-work` | Work identity template (auto-loaded for `~/Documents/Work/`) |
 | `starship.toml` | Starship prompt theme |
 | `ssh_config` | SSH over Port 443 for GitHub (VPN/firewall bypass) |
-
-## Fresh Mac Setup
-
-### Phase 1 — Base Environment
-
-```bash
-# Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Core tools
-brew install antidote starship git zoxide fzf
-brew install --cask font-jetbrains-mono-nerd-font
-```
-
-> **iTerm2 font**: `Settings` → `Profiles` → `Text` → `Font` → `JetBrainsMono Nerd Font`
-
-### Phase 2 — SSH & Repository
-
-```bash
-ssh-keygen -t ed25519 -C "your_email@example.com"
-pbcopy < ~/.ssh/id_ed25519.pub
-```
-
-Add the copied public key to **GitHub** → **Settings** → **SSH Keys**, then:
-
-```bash
-git clone git@github.com:Zihann73/zihanq-dotfiles.git ~/dotfiles
-```
-
-### Phase 3 — Deploy
-
-```bash
-cd ~/dotfiles
-bash install.sh
-mkdir -p ~/Documents/Work
-source ~/.zshrc
-```
-
-Done. Ready to build.
 
 ## Git Aliases
 
@@ -110,3 +115,7 @@ gl
 | Git push fails behind VPN/firewall | `ssh_config` routes GitHub over Port 443 |
 | Terminal shows garbled icons | Install `JetBrainsMono Nerd Font` and set it in iTerm2 |
 | Zsh plugin conflicts | Antidote manages all plugins declaratively via `.zsh_plugins.txt` |
+
+## Learn More
+
+See **[GUIDE.md](GUIDE.md)** for a detailed explanation of every configuration file and the design decisions behind this setup.
